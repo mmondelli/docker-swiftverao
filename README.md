@@ -1,4 +1,5 @@
 # docker-swiftverao
+<<<<<<< HEAD
 ===========
 
 This repo contains:
@@ -18,3 +19,5 @@ $ cd home
 $ source env_verao
 
 For more commands, please refer to the Docker documentation.
+=======
+>>>>>>> 3fb04cb572402b736391ac723eb107167fec3dcd
