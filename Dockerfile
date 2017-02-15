@@ -77,8 +77,9 @@ ADD uteis/swiftlog /usr/local/swift/bin/
 ADD uteis/schema_sqlite.sql /usr/local/swift/etc/provenance/
 ADD uteis/tutorial/ /root/tutorial/
 ADD uteis/swift_provenance.db /root/
+ADD uteis/swift_provenance.db /srv/shiny-server/swift-prof
 
-COPY shiny-server.sh /usr/bin/shiny-server.sh
+COPY uteis/shiny-server.sh /usr/bin/shiny-server.sh
 RUN chmod 755 /usr/bin/shiny-server.sh
 
 #USER root
