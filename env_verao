@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#export PATH=/home/mluiza/swift-k/dist/swift-svn/bin:$PATH
+#export PATH=/home/mluiza/jdk1.8.0_60/bin:$PATH
+#export PATH=/home/mluiza/programs/mafft-7.221-with-extensions/bin:$PATH
+#export PATH=/home/mluiza/programs/standard-RAxML-master:$PATH
+source /etc/bashrc
+export SWIFT_PHYLO=/home/swift-phylo/bin
+export PATH=$SWIFT_PHYLO:$PATH

@@ -1,0 +1,51 @@
+// CACHE ID 24798673-6a48-4462-ba44-35d423f711cc-no-provenance
+import(sys)
+import(scheduler)
+import(swift)
+importStdlib(1)
+
+types(
+	xs:schema(
+    			xs:simpleType("file", xs:restriction("string"))
+    )
+)
+swift.field.f.file := swift:field("f", "file")
+swift.field.const.float := swift:field("const", "float")
+swift.field.const.int := swift:field("const", "int")
+swift.field.temp.int := swift:field("temp", "int")
+swift.field.const.string := swift:field("const", "string")
+swift.field.const.boolean := swift:field("const", "boolean")
+swift.string.17000 := swift:new(swift.field.const.string, value="sim.out")
+f := 
+		swift:new(swift.field.f.file, _defline=8
+			swift:mapping("SingleFileMapper", swift:parameter("file", swift.string.17000))
+		)
+
+simulation := function(o) {
+	swift:unitStart("PROCEDURE", name="simulation", line=3, outputs="o")
+	swift:waitFor()
+	k:tailcall(
+		swift:execute(
+			"simulation",
+				swift:stageOut(o)
+	  		swift:commands(
+	  				swift:command("simulate", null, swiftscript:filename(#_line=5
+	  				o
+	  			), null, )
+	  		)
+		)
+	)
+	swift:unitEnd("PROCEDURE", name="simulation", line=3)}
+
+restartLog(name = k:concat(contextAttribute("SWIFT:SCRIPT_NAME"), "-", contextAttribute("SWIFT:RUN_ID"))) {
+	swift:mains(
+		swift:startProgressTicker()
+		simulation(#_line=9
+			k:getAndDelete(f)
+		)
+		swift:stopProgressTicker()
+	)
+}
+
+swift:cleanDataset(f)
+swift:cleanDataset(shutdown=true)
