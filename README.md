@@ -14,9 +14,9 @@ Steps to use this container
 ===========
 $ sudo docker build -t swift-verao .
 
-$ sudo docker run swift-verao -i /bin/bash
+$ sudo docker run -p 3838:3838 -t swift-verao -i /bin/bash
 
-$ cd home
+$ cd 
 
 $ source env_verao
 
