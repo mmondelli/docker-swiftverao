@@ -99,7 +99,7 @@ Caso não estiver instalado:
 ============================
 
 > Baixar: https://github.com/mmondelli/swift-phylo
-> unzip docker-swiftverao-master.zip
+> unzip swift-phylo.zip
 > cd ~/swift-phylo/
 > swift swiftPhylo.swift 
 > ls -ltrh 

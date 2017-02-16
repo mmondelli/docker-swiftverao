@@ -13,6 +13,6 @@
 #export PATH=$SWIFT_PHYLO:$PATH
 
 dir=$(pwd)
-
+echo $dir
 export PATH=$dir/c-ray/bin:$PATH
-source /uteis/tutorial/setup.sh
+source $dir/uteis/tutorial/setup.sh
