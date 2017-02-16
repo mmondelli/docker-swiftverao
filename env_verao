@@ -7,3 +7,4 @@
 source /etc/bashrc
 export SWIFT_PHYLO=/home/swift-phylo/bin
 export PATH=$SWIFT_PHYLO:$PATH
+source /uteis/tutorial/setup.sh
