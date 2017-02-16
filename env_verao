@@ -4,7 +4,15 @@
 #export PATH=/home/mluiza/jdk1.8.0_60/bin:$PATH
 #export PATH=/home/mluiza/programs/mafft-7.221-with-extensions/bin:$PATH
 #export PATH=/home/mluiza/programs/standard-RAxML-master:$PATH
-source /etc/bashrc
-export SWIFT_PHYLO=/home/swift-phylo/bin
-export PATH=$SWIFT_PHYLO:$PATH
+
+#source /etc/bashrc
+
+#export SWIFT_PHYLO=~/swift-phylo/bin
+#export PATH=$SWIFT_PHYLO/mafft-7.221-with-extensions/bin:$PATH
+#export PATH=$SWIFT_PHYLO/standard-RAxML-master/bin:$PATH
+#export PATH=$SWIFT_PHYLO:$PATH
+
+dir=$(pwd)
+
+export PATH=$dir/c-ray/bin:$PATH
 source /uteis/tutorial/setup.sh
