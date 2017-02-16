@@ -14,7 +14,8 @@ RUN apt-get install -y \
 	mafft \
 	raxml \
 	software-properties-common \
-	gdebi-core 
+	gdebi-core \
+	time
 
 # ==============
 # R PACKAGES ===
