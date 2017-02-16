@@ -5,6 +5,10 @@
 - Instalação do swift ------
 ============================
 
+Executar:
+$ swift -version
+
+Caso não estiver instalado:
 > wget http://swiftlang.org/packages/swift-0.96.2.tar.gz
 > tar xfz swift-0.96.2.tar.gz
 > export PATH=$PATH:~/swift-0.96.2/bin
@@ -21,8 +25,7 @@
 - Tutorial -----------------
 ============================
 
-> source setup.sh
-> cd tutorial 
+> cd uteis/tutorial 
 
 = 0. Hello Swift ==========
 
@@ -30,6 +33,7 @@
 > swift hello.swift
 > swiftlog -import-provenance <run_id>
 
+> cd ..
 
 = 1. Part01 ==========
 
@@ -37,6 +41,8 @@
 > swift p1.swift
 > cat sim.out
 > swiftlog -import-provenance <run_id>
+
+> cd ..
 
 = 2. Part02 ==========
 
@@ -46,6 +52,8 @@
 > cat output/sim_1.out
 > swiftlog -import-provenance <run_id>
 
+> cd ..
+
 = 3. Part03 ==========
 
 > cd part03
@@ -53,6 +61,8 @@
 > ls -ltrh output
 > more output/*out
 > swiftlog -import-provenance <run_id>
+
+> cd ..
 
 = 4. Part04 ==========
 
@@ -62,6 +72,8 @@
 > more output/sim_1.log
 > swiftlog -import-provenance <run_id>
 
+> cd ..
+
 = 5. Part05 ==========
 
 > cd part05
@@ -69,6 +81,8 @@
 > ls -ltrh output
 > more output/average*
 > swiftlog -import-provenance <run_id>
+
+> cd ..
 
 = 6. Part06 ==========
 
@@ -78,15 +92,7 @@
 > more output/average*
 > swiftlog -import-provenance <run_id>
 
-============================
-- Pagerank -----------------
-============================
-
-> cd ~/verao/pagerank/
-> tar xfz raw.en3.tar.gz
-> swift pagerank.swift -word=Brazil
-> more sort.txt
-> swiftlog -import-provenance <run_id>
+> cd ..
 
 ============================
 - SwiftPhylo----------------
@@ -100,14 +106,57 @@
 > swiftlog -import-provenance <run_id>
 
 ============================
+- Pagerank -----------------
+============================
+
+> cd ~/verao/pagerank/
+> tar xfz raw.en3.tar.gz
+> swift pagerank.swift -word=Brazil
+> more sort.txt
+> swiftlog -import-provenance <run_id>
+
+
+============================
+- C-Ray --------------------
+============================
+
+> cd ~/verao/c-ray/
+> swift c-ray.swift 
+> swiftlog -import-provenance <run_id>
+
+
+============================
 - Análises -----------------
 ============================
 
 > sqlite3 ~/swift_provenance.db
+> .mode column
+> .mode list
+> .header on
+
 Consultas:
+
+- 1. Listar tabelas do bd 
+> .tables
+
+- 2. Listar execuções de workflows
 > select * from script_run;
-> select count(*) from app_exec group by script_run_id;
+
+- 3. Listar quantidade de atividades executadas por cada workflow
+> select script_run_id, count(*) from app_exec group by script_run_id;     
+
+- 4. Listar média de duração das atividades de cada workflow
+> select s.script_run_id, a.app_name, avg(a.duration) as avg_duration from resource_usage r, app_exec a, script_run s
+where a.app_exec_id = r.app_exec_id
+and s.script_run_id = a.script_run_id
+group by a.app_name order by s.script_run_id;
+
+- 5. Listar arquivos gerados por cada atividade dos workflows
+> select a.script_run_id, a.app_name, f.name from staged_out 
+natural join app_exec a natural join file f
+order by a.script_run_id;
+
+0. Sair do sqlite3
 > .q
 
-Interface:
-/usr/bin/shiny-server.sh
+
