@@ -14,7 +14,7 @@
 ============================
 
 > mv docker-swiftverao-master verao
-> cd verao
+> cd verao 
 > source env_verao 
 
 ============================
@@ -92,6 +92,8 @@
 - SwiftPhylo----------------
 ============================
 
+> Baixar: https://github.com/mmondelli/swift-phylo
+> unzip docker-swiftverao-master.zip
 > cd ~/swift-phylo/
 > swift swiftPhylo.swift 
 > ls -ltrh 
