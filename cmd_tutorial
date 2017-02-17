@@ -99,8 +99,10 @@ Caso não estiver instalado:
 ============================
 
 > Baixar: https://github.com/mmondelli/swift-phylo
-> unzip swift-phylo.zip
-> cd ~/swift-phylo/
+> unzip swift-phylo-master.zip
+> cd ~/swift-phylo-master/
+> ./install_mafft
+> source env_phylo
 > swift swiftPhylo.swift 
 > ls -ltrh 
 > swiftlog -import-provenance <run_id>
